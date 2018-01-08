@@ -1,0 +1,6 @@
+dbs.admin:
+  title: 'Database Select'
+  description: 'Provides an easy navigation through Entity types node, taxonomy, block'
+  parent: system.admin_config_development
+  route_name: dbs.node
+  weight: 100

@@ -1,0 +1,11 @@
+name: Database Search
+description: Provides an easy navigation through databse
+package: Custom
+
+type: module
+# core: 8.x
+
+# Information added by Drupal.org packaging script on 2017-11-20
+version: '8.x-1.21'
+core: '8.x'
+project: 'dbs'

@@ -1,0 +1,17 @@
+dbs.node_tab:
+  route_name: dbs.node
+  title: Node Search
+  base_route: dbs.node
+  weight: 10
+
+dbs.taxonomy_tab:
+  route_name: dbs.taxonomy
+  title: Taxonomy Search
+  base_route: dbs.node
+  weight: 20
+
+dbs.block_tab:
+  route_name: dbs.block
+  title: Block Search
+  base_route: dbs.node
+  weight: 30
