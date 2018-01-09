@@ -11,6 +11,7 @@ use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
 use Drupal;
+use Drupal\block\Entity;
 
 class DBSBlockForm extends FormBase {
 
@@ -49,6 +50,11 @@ class DBSBlockForm extends FormBase {
             '#title' => $this->t('Reset'),
             '#type' => 'link',
             '#url' => Url::fromRoute('dbs.block'),
+        ];
+
+        $form['blob'] = [
+          '#type' => 'markup',
+          '#markup' => $this->_get_block_region(),
         ];
 
         if(!empty($_GET)){
@@ -141,5 +147,11 @@ class DBSBlockForm extends FormBase {
         $query = $query->extend('Drupal\Core\Database\Query\PagerSelectExtender')->limit(10);
 
         return $query->execute();
+    }
+
+    function _get_block_region() {
+      // @TODO: Smisli kako ces da loadujes block machine name!!! :)
+      $block = entity_load('block', 'customblockcreatedbyadmin');
+      kint($block->getRegion());
     }
 }

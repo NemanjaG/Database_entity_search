@@ -9,46 +9,46 @@ use Drupal\Core\Database\Database;
 use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\user\RoleInterface;
 
-/**
- * Implements hook_schema().
- */
-function dbs_schema() {
-  $schema['block_region'] = [
-    'fields' => [
-      'bid' => [
-        'description' => 'Block id.',
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
-        'default' => 0,
-      ],
-      'region' => [
-        'description' => 'Region where block is positioned.',
-        'type' => 'varchar',
-        'length' => 24,
-        'not null' => TRUE,
-        'default' => '',
-      ],
-    ],
-    'primary key' => ['bid'],
-  ];
-
-  return $schema;
-}
-
-/**
- * Implements hook_install().
- */
-function dbs_install() {
-  // Populate the block region table.
-  if(!db_table_exists('block_region')){
-      db_insert('block_region')->execute();
-  }
-}
-
-/**
- * Implements hook_uninstall().
- */
-function dbs_uninstall() {
-    drupal_uninstall_schema('block_region');
-}
+///**
+// * Implements hook_schema().
+// */
+//function dbs_schema() {
+//  $schema['block_region'] = [
+//    'fields' => [
+//      'bid' => [
+//        'description' => 'Block id.',
+//        'type' => 'int',
+//        'unsigned' => TRUE,
+//        'not null' => TRUE,
+//        'default' => 0,
+//      ],
+//      'region' => [
+//        'description' => 'Region where block is positioned.',
+//        'type' => 'varchar',
+//        'length' => 24,
+//        'not null' => TRUE,
+//        'default' => '',
+//      ],
+//    ],
+//    'primary key' => ['bid'],
+//  ];
+//
+//  return $schema;
+//}
+//
+///**
+// * Implements hook_install().
+// */
+//function dbs_install() {
+//  // Populate the block region table.
+//  if(!db_table_exists('block_region')){
+//      db_insert('block_region')->execute();
+//  }
+//}
+//
+///**
+// * Implements hook_uninstall().
+// */
+//function dbs_uninstall() {
+//    drupal_uninstall_schema('block_region');
+//}
