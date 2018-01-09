@@ -1,2 +1,12 @@
 <?php
 
+function dbs_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  //Altering taxonomy form.
+  if($form_id == 'db_search_taxonomy_form') {
+    //Adding Any option to taxonomy select.
+    if(!empty($form['taxonomy'])){
+      $form['taxonomy']['#options']['any'] = '- Any -';
+      $form['taxonomy']['#default_value'] = 'any';
+    }
+  }
+}

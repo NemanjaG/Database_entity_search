@@ -45,10 +45,8 @@ class DBSTaxonomyForm extends FormBase {
                 '#type' => 'select',
                 '#title' => 'Taxonomy',
                 '#options' => $this->_get_taxonomy($_GET['vocabulary']),
-                '#default_value' => isset($_GET['taxonomy']) ? $_GET['taxonomy'] : '',
+                '#default_value' => isset($_GET['taxonomy']) ? $_GET['taxonomy'] : 'any',
             ];
-
-            $form['vocabulary'] = [];
         }
 
         $results = $this->_get_results($_GET['vocabulary'], $_GET['taxonomy']);
@@ -74,7 +72,7 @@ class DBSTaxonomyForm extends FormBase {
         }
 
         //when taxonomy is selected build new header.
-        if(!empty($_GET['taxonomy'])) {
+        if(!empty($_GET['taxonomy']) && ($_GET['taxonomy'] != 'any')) {
 
             $results_node = $this->_get_results_node($_GET['taxonomy']);
 
@@ -181,8 +179,10 @@ class DBSTaxonomyForm extends FormBase {
             $query->condition('ttfd.vid', $vocabulary);
         }
         //content taxonomy check.
-        if(!empty($taxonomy)) {
+        if(!empty($taxonomy) && ($taxonomy != 'any')) {
             $query->condition('ttfd.tid', $taxonomy);
+        } else {
+          $query->condition('ttfd.tid', NULL, 'is not');
         }
 
 //        table sort select extender.
